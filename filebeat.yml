@@ -41,7 +41,7 @@ output.elasticsearch:
   hosts: 'http://127.0.0.1:9200'
   username: ''
   password: ''
-  index: '${ES_INDEX:cloudflare-log}'
+  index: 'cloudflare-log-%{+yyyy.MM.dd}'
 
 output.file:
   enabled: false
@@ -52,11 +52,11 @@ setup.dashboard:
 setup.ilm:
   enabled: false  # ES_ILM_ENABLED in startup script
   check_exists: true
-  overwrite: false  # ES_ILM_OVERWRITE in startup script
-  pattern: '{now/M{YYYY.MM}}-000001'
-  policy_name: '${ES_INDEX:cloudflare-log}'
+#  overwrite: false  # ES_ILM_OVERWRITE in startup script
+#  pattern: '{now/M{YYYY.MM}}-000001'
+#  policy_name: '${ES_INDEX:cloudflare-log}'
   # policy_file: ${ES_ILM_POLICY_FILE} in startup script
-  rollover_alias: '${ES_INDEX:cloudflare-log}'
+#  rollover_alias: '${ES_INDEX:cloudflare-log}'
 
 setup.kibana:
   enabled: false
