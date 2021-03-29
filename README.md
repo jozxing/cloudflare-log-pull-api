@@ -11,6 +11,7 @@ chmod +x run.sh feron<br/>
 cp feron /usr/local/bin<br/>
 crontab -e<br/>
 &emsp;*/1 * * * * /bin/bash -c "/opt/cloudflare/run.sh --from-cron"<br/>
+&emsp;5 1 * * * /bin/bash -c "curl -X DELETE http://127.0.0.1:9200/cloudflare-log-`date -d '1 days ago' +%Y.%m.%d`"
 ##修改run.sh 里的配置信息<br/>
 CF_ZONE_ID='xxxxxxxxx'<br/>
 CF_AUTH_EMAIL='xxxxxxxxxxxxx'<br/>
@@ -21,7 +22,7 @@ SAMPLE_RATE='0.01'    <br/>
 
 其中export PATH，需要手动echo $PATH 环境变量，然后修改环境变量即可。<br/>
 
-feron ----> https://github.com/anapsix/feron
+feron ----> https://github.com/anapsix/feron<br/>
 
 致谢 LKK 运维大佬一起调试完成。
 
